@@ -29,8 +29,8 @@ public class MyController {
     }
 
     @GetMapping(value = "/ccustomer/{id}")
-    public ResponseEntity<?> getCcustomer(@PathVariable(name = "id") Long id) {
-        Object byId = customerRepository.cccc(id);
-        return ResponseEntity.ok(byId);
+    public ResponseEntity<?> getCustomerById(@PathVariable(name = "id") Long id) {
+        Optional<Customer> byId = customerRepository.customerById(id);
+        return ResponseEntity.ok(byId.orElse(new Customer()));
     }
  }
